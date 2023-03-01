@@ -64,7 +64,7 @@ const sum = (arr) => {
 
 console.log(sum(arr));
 
-// Codepad Maripi Srinuvasarao|StanzaLiving|ReactNative SDE1|Coding
+// Codepad Maripi Srinuvasarao|StanzaLiving|ReactNative SDE|Coding
 
 /**
  * Given an array [“123f”, “1dsa12”, “1212ds”, “65fd”, “sadfa”, “asdasd”]
