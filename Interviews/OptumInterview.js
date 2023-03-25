@@ -86,20 +86,22 @@ export default App;
 
 // Parent Component:
 
- import React, { useState, Component } from "react";
+import React, { useState, Component } from "react";
 import InputComponent from "./InputComponent";
 import "./App.css";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
+
   const handleSetInputText = (e) => {
     setInputText(e);
   };
+
   return (
     <div className="font-color">
       <div>{inputText}</div>
       <InputComponent
-        handleSetInputText={() => handleSetInputText()}
+        handleSetInputText={handleSetInputText}
         inputText={inputText}
       />
     </div>
@@ -110,13 +112,12 @@ export default App;
 // Child Component
 
 import React, { useState, Component } from "react";
+
 import "./App.css";
 
-const InputComponent = (handleSetInputText, inputText) => {
+const InputComponent = ({ handleSetInputText, inputText }) => {
   const [finalSum, setFinalSum] = useState("");
-  const sendData = () => {
-  handleSetInputText(finalSum);
-  };
+
   return (
     <div className="font-color">
       <input
@@ -124,7 +125,7 @@ const InputComponent = (handleSetInputText, inputText) => {
         value={finalSum}
         onChange={(e) => {
           setFinalSum(e.target.value);
-          sendData();
+          handleSetInputText(e.target.value);
         }}
         placeholder="text box"
       />
