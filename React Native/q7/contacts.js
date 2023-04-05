@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 
+// Contacts app
 export default function ToDoList() {
   const [data, setData] = useState([
     { name: "Fake Name", number: "901432", email: "ved@gmail.com" },
