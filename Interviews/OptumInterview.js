@@ -133,3 +133,14 @@ const InputComponent = ({ handleSetInputText, inputText }) => {
   );
 };
 export default InputComponent;
+
+
+
+// Optum - Round 2
+
+// More of techinical questions:
+// what is the challenging feature you developed? why it is challenging?
+// Innovative thing that you have done till now?
+// How do you handle pressure?
+// how do you approach a problem? how you solve?
+// Why you are changing from your previous company?
