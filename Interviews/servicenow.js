@@ -1,42 +1,3 @@
-// implement setTimeout without using setTimeout
-// ServiceNow
-window.mySetTimeout = function (callback, timer) {
-  const targetTime = new Date().getTime() + timer;
-
-  const intervalId = setInterval(() => {
-    const currentTime = new Date().getTime();
-    if (currentTime >= targetTime) {
-      clearInterval(intervalId);
-      callback();
-    }
-  }, 1);
-};
-
-window.mySetTimeout(function () {
-  console.log("Custom setTimeout executed!");
-}, 2000);
-
-// another approach
-window.mySetTimeout = function (callback, timer) {
-  const startTime = performance.now();
-
-  function checkTime() {
-    const currentTime = performance.now(); // Get the current time inside the function
-    if (currentTime - startTime >= timer) {
-      callback();
-    } else {
-      requestAnimationFrame(checkTime);
-    }
-  }
-
-  requestAnimationFrame(checkTime);
-};
-
-window.mySetTimeout(function () {
-  console.log("Custom setTimeout executed!");
-}, 2000);
-
-////////////////////////////////////////////////////////
 async function a() {
   console.log("before a");
   await b();
@@ -60,17 +21,25 @@ console.log("first 1");
 a();
 console.log("second 1");
 
-////////////////////////////////////////////////////////
-//Generator functions in JavaScript
-function* myGenerator() {
-  yield 1;
-  yield 2;
-  yield 3;
+// output
+
+// first 1
+// before a
+// before b
+// after setTimeout
+// in setTimeout
+// after a
+// second 1
+
+var a = 3;
+let b = 5;
+function c() {
+  let a = 7;
+  let b = 8;
+  console.log(a);
+  console.log(b);
 }
+c();
 
-const gen = myGenerator();
-
-console.log(gen.next()); // { value: 1, done: false }
-console.log(gen.next()); // { value: 2, done: false }
-console.log(gen.next()); // { value: 3, done: false }
-console.log(gen.next()); // { value: undefined, done: true }
+// 7
+// 8
