@@ -23,13 +23,13 @@ console.log("second 1");
 
 // output
 
-// first 1
-// before a
-// before b
-// after setTimeout
-// in setTimeout
-// after a
-// second 1
+// "first 1"
+// "before a"
+// "before b"
+// "after setTimeout"
+// "second 1"
+// "in setTimeout"
+// "after a"
 
 var a = 3;
 let b = 5;
