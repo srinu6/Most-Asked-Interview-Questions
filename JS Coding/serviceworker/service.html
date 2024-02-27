@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>count numbers: <output id="result"></output></p>
+    <button onclick="startWorker()">Start Worker</button>
+    <button onclick="stopWorker()">Stop Webworker</button>
+    <script>
+      let w;
+      function startWorker() {
+        if (typeof Worker !== undefined) {
+          if (typeof w == undefined) {
+            w = new Worker(demo_worker.js);
+          }
+          w.onmessage = function (event) {
+            document.getElementById("result").innerHTML = event.data;
+          };
+        }
+      }
+
+      function stopWorker() {
+        w.terminate();
+        w = undefined;
+      }
+    </script>
+  </body>
+</html>
