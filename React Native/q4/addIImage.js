@@ -47,7 +47,7 @@ export default function UsersData() {
           setnewData(!newdata);
         }}
       >
-        touch me
+        Touch me
       </TouchableOpacity>
     </View>
   );
