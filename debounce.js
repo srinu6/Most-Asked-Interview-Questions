@@ -22,36 +22,20 @@ const debounce = (func, wait) => {
   };
 };
 
+const debounce = function (fn, d) {
+  let timer;
 
+  return function () {
+    const context = this;
 
+    const args = arguments;
 
+    clearTimeout(timer);
 
-srinuvasarao maripi <srinumaripi.nitsri@gmail.com>
-11:05 PM (0 minutes ago)
-to Srinu
+    timer = setTimeout(() => {
+      fn.apply(context, args);
+    }, d);
+  };
+};
 
-const debounce = function(fn, d){
-
- let timer;
-
- return function(){
-
-  const context=this;
-
-    const args= arguments;
-
-  clearTimeout(timer);
-
-  timer= setTimeout(()=>{
-
-   
-
-     fn.apply(context, args);
-
-  }, d)
-
- }
-
-}
-
-debounce(apiCall(), 500)
+debounce(apiCall(), 500);
