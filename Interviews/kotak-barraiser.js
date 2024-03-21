@@ -1,5 +1,4 @@
-// Create a universal function that can accept an object as a parameter, and then create a logic to generate the single object output as shown below 
-
+// Create a universal function that can accept an object as a parameter, and then create a logic to generate the single object output as shown below
 
 // input
 var user = {
@@ -58,32 +57,22 @@ var flattenedUser = flattenObject(user);
 
 console.log(flattenedUser);
 
-
 ///////////////////////////////////////////////////
-// given a number, need to prepare N X N boxes on screen, clicking on it should show blue color. 
-const [a, setA]=useState(2);
+// given a number, need to prepare N X N boxes on screen, clicking on it should show blue color.
+const [a, setA] = useState(2);
 
-  const Tile=()=>{
-    return <View style={styles.box}> </View>
-  }
- const newView=[]
- const tileView = []
-
- for(let i=0;i<a;i++){
-    tileView.push(<Tile />)
- }
-
-
-  for(let i=0;i<a;i++){
-      newView.push(<View style={styles.row}>    
-   {tileView.map(d=> d)}
-        
-        </View>)
-  }
-
-  return (
-    <View>
-  {newView.map(d=> d)}
-</View>
-  );
+const Tile = () => {
+  return <View style={styles.box}> </View>;
 };
+const newView = [];
+const tileView = [];
+
+for (let i = 0; i < a; i++) {
+  tileView.push(<Tile />);
+}
+
+for (let i = 0; i < a; i++) {
+  newView.push(<View style={styles.row}>{tileView.map((d) => d)}</View>);
+}
+
+return <View>{newView.map((d) => d)}</View>;
