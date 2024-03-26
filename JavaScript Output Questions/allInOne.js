@@ -124,3 +124,35 @@ console.log("script end");
 ("async1 end");
 ("promise2");
 ("setTimeout");
+
+//////////////////////////////////////////////////////
+// What is the priority of execution of callback, promise, setTimeout, process.nextTick()?
+
+// process.nextTick() executes before promises
+
+//// ex code
+
+// Promises
+new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    resolve("Promise");
+  }, 1000);
+}).then(function (result) {
+  console.log(result);
+});
+
+setTimeout(callback, 2000);
+
+// setTimeout()
+setTimeout(function () {
+  console.log("setTimeout()");
+}, 2000);
+
+// Callbacks
+function callback() {
+  console.log("Callback");
+}
+
+process.nextTick(function () {
+  console.log("process.nextTick()");
+});
