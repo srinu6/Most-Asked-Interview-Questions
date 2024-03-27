@@ -5,13 +5,22 @@ export default function App() {
   var timer;
   const containerRef = useRef(null);
   const blockElements = [];
-  for (let i = 1; i <= blocks; i++) {
-    blockElements.push(<div className="block"></div>);
-  }
   const [reqBlock, setReqBlock] = useState((Math.random() * 10) % blocks);
   const [highScore, setHighScore] = useState(0);
   const [sucess, setSucess] = useState(null);
   const [failure, setFailure] = useState(null);
+  for (let i = 1; i <= blocks; i++) {
+    blockElements.push(
+      <div
+        key={i}
+        className={` ${i === reqBlock ? "active" : ""} ${
+          i === sucess ? "green" : ""
+        } ${i === failure ? "red" : ""} block`}
+        id={i}
+        onClick={() => handlePress(i)}
+      ></div>
+    );
+  }
 
   useEffect(() => {
     if (localStorage.getItem("highscores") < highScore) {
@@ -54,25 +63,45 @@ export default function App() {
       <div>local:{highScore}</div>
       <div>HighScore:{localStorage.getItem("highscores") || 0}</div>
       <div ref={containerRef} className="App">
-        {blockElements?.map((bl, index) => {
-          return (
-            <div
-              key={index}
-              className={`${index === reqBlock ? "active" : ""} ${
-                index === sucess ? "green" : ""
-              } ${index === failure ? "red" : ""}`}
-              id={index}
-              onClick={() => handlePress(index)}
-            >
-              {bl}
-            </div>
-          );
-        })}
+        {blockElements}
       </div>
       <button onClick={handleStart}>Start</button>
     </>
   );
 }
+// styles
+
+// .App {
+//     font-family: sans-serif;
+//     text-align: center;
+//     display: flex;
+//     flex-direction: row;
+//   }
+
+//   .block {
+//     width: 100px;
+//     height: 100px;
+//     border: 1px solid gray;
+//   }
+
+//   .active {
+//     background-color: blue;
+//   }
+
+//   .green {
+//     background-color: green;
+//   }
+
+//   .red {
+//     background-color: red;
+//   }
+
+//   .startButton {
+//     margin: 20px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
 
 // Polyfill for Map
 
