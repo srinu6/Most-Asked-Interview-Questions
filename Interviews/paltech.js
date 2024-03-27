@@ -64,7 +64,7 @@ const ShowUserData = () => {
 
 // redux persist.
 
-//Unit test case
+// Unit test case
 // how do you write unit test for setTimeout? we cannot wait if timer is present right,
 // in that case how to write unit test?
 
